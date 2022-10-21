@@ -1,5 +1,6 @@
 #include "list.c"
 #include "treemap.c"
+#include "hashmap.c"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -93,7 +94,7 @@ int main(void){
             break;
         case 4:
             system("cls");
-            Mostrar_juegos_valoracion(Arbol_Precio);
+            Mostrar_juegos_valoracion(Arbol_Valoracion);
             break;
         case 5:
             system("cls");
@@ -152,7 +153,7 @@ void Importar(List* ListJuegos, TreeMap* Arbol_Precio, TreeMap* Arbol_Valoracion
         new_game->precio = precio;
 
         AgregarArbol_Precio(Arbol_Precio, new_game);
-        AgregarArbol_Valoracion(Arbol_Precio, new_game);
+        AgregarArbol_Valoracion(Arbol_Valoracion, new_game);
 
     }
 
@@ -214,17 +215,17 @@ void Mostrar_juegos_precio(TreeMap* Arbol_Precio){
             List* List = data->value;
             Juego* data_2 = firstList(List);
             while(data_2 != NULL){
-                printf("%s,%d,%d,%d\n",data_2->nombre,data_2->fecha,data_2->valoracion,data_2->precio);
-                //pushFront(List_2,data_2);
+                //printf("%s,%d,%d,%d\n",data_2->nombre,data_2->fecha,data_2->valoracion,data_2->precio);
+                pushFront(List_2,data_2);
                 data_2 = nextList(List);
             }
             data = nextTreeMap(Arbol_Precio);
         }
 
-        /*
-
-        printf("--Presione 1 si quiere de menor a mayor.--\n--Presione 2 si quiere de mayor a menor.--\n\n");
-        scanf("%d\n",flag);
+        
+        fflush(stdin);
+        printf("--Presione 1 si quiere de mayor a menor.--\n--Presione 2 si quiere de menor a mayor.--\n\n");
+        scanf("%d",&flag);
 
         if(flag == 1){
             Juego* dato = firstList(List_2);
@@ -239,7 +240,8 @@ void Mostrar_juegos_precio(TreeMap* Arbol_Precio){
                 dato = prevList(List_2);
             }
         } 
-        */
+        
+        
     }
 
 
@@ -273,14 +275,18 @@ void AgregarArbol_Valoracion(TreeMap* Arbol_Valoracion, Juego* new_game){
 }
 
 void Mostrar_juegos_valoracion(TreeMap* Arbol_Valoracion){
-    Pair* data = firstTreeMap(Arbol_Valoracion);
-    List* List_2 = createList();
     int num;
+    fflush(stdin);
+    printf("Ingrese dato de valoracion deseada y se le imprimiran mayores a ese:\n");
+    scanf("%d", &num);
+    Pair* data = firstTreeMap(Arbol_Valoracion);
+
 
     if(data == NULL){
         printf("Aun no se ingresan juegos.\n");
     }else{
-        scanf("Ingrese valoracion y se buscaran juegos mayores al dato ingresado: %d",num);
+
+        Pair* data = upperBound(Arbol_Valoracion,&num);
 
         while(data != NULL){
             List* List = data->value;
@@ -289,15 +295,17 @@ void Mostrar_juegos_valoracion(TreeMap* Arbol_Valoracion){
                 
                 printf("%s,%d,%d,%d\n",data_2->nombre,data_2->fecha,data_2->valoracion,data_2->precio);
 
-                pushFront(List_2,data_2);
                 data_2 = nextList(List);
             }
             data = nextTreeMap(Arbol_Valoracion);
         }
+
+
     }
 
 
 }
+
 
 
 
