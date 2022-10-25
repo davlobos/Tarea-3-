@@ -15,7 +15,7 @@ En el aspecto del menú:
 5. Debe ingresar solamente el año y le saldrá el juego del año si existe.
 6. Busca un juego por nombre y luego puede actualizarlo o eliminarlo.
 7. Ingrese el archivo donde va exportar y ese archivo se llama "exportar.csv", y se ingresaran los juegos que ya tenga importados a ese archivo.
-0. Finaliza la aplicacion.
+ 0 Finaliza la aplicacion.
 
 (2) Todas las opciones del menú funcionan bien, no ocurre ningun error de sintaxis, puede ocurrir fallos si el usuario ingresa algo incorrectamente pero eso lleva más a las pruebas del usuario y lo que coloque, no sé si sea error pero al colocar la ñ ocuure un error visual pero lo deje porque no era mucha molestia. 
 
