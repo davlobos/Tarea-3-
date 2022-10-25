@@ -251,14 +251,16 @@ void Mostrar_juegos_precio(TreeMap* Arbol_Precio){
         fflush(stdin);
         printf("--Presione 1 si quiere de mayor a menor.--\n--Presione 2 si quiere de menor a mayor.--\n\n");
         scanf("%d",&flag);
-        printf("\nNombre,año de salida,valoracion,precio:\n\n");
+        
         if(flag == 1){
+            printf("\nNombre,año de salida,valoracion,precio:\n\n");
             Juego* dato = firstList(List_2);
             while(dato != NULL){
                 printf("%s,%d,%d,%d\n",dato->nombre,dato->fecha,dato->valoracion,dato->precio);
                 dato = nextList(List_2);
             }
         }else if(flag == 2){
+            printf("\nNombre,año de salida,valoracion,precio:\n\n");
             Juego* dato = lastList(List_2);
             while(dato != NULL){
                 printf("%s,%d,%d,%d\n",dato->nombre,dato->fecha,dato->valoracion,dato->precio);
